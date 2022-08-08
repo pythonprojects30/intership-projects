@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class = "container">
+ <div class = "row">
+     <div class = "col-md-6">
+         <img src = "{{cinema.img.url}}" class="rounded float-left" width = "250" height="300" > <br><br>
+     </div>
+     <div class = "col-md-6">
+        <h1><i> {{cinema.name}}</i></h1>
+         {{cinema.desc}}
+          {{cinema.year}}
+             <div class = "row">
+               <div class = "col-md-6">
+        <a class="btn btn-outline-success" href = "{% url 'movieapp:update' cinema.id %}">Update</a>
+            <a class="btn btn-outline-warning" href = "{% url 'movieapp:delete' cinema.id %}">delete</a>
+               </div>
+           </div>
+     </div>
+ </div>
+    </div>
+{% endblock %}
