@@ -7,7 +7,7 @@
         <input type = 'text' name="desc" placeholder=" Enter the movie description"><br><br>
         <input type = 'text' name="year" placeholder=" Enter the movie year"><br><br>
         <input type = 'file' name="img" ><br><br>
-        <input type = "submit">
+        <a class="btn btn-outline-secondary" href = "{% url 'movieapp:details'  %}">Submit</a>
         </div>
 </form>
 {% endblock %}
