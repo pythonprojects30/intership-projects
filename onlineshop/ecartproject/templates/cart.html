@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block metadescription %}
+   This is the cart page.Procced to review your items and place the order..
+{% endblock %}
+{% block title %}
+Cart
+{% endblock %}
+{% block content %}
+{% if not cartitem %}
+  <div>
+      <div class="text-center">
+          <br>
+          <h1 class="text-center my_title">Your shopping cart is empty</h1>
+          <br>
+          <p class="text-center">
+              please click<a href="{% url 'ecartapp:allproduct' %}">Here</a>to continue shopping
+          </p>
+      </div>
+  </div>
+{% else %}
+   <div>
+       <div class="text-center">
+           <br>
+           <h1 class="text-center my_title">Your shopping cart</h1>
+           <br>
+       </div>
+   </div>
+   <div class="row mx-auto">
+       <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+           <table class="table my_custom_table">
+               <thead class="my_custom_thead"style="background-color:#ffe6ff">
+                 <tr>
+                     <th colspan="5">
+                         Your Items
+                     </th>
+                 </tr>
+               </thead>
+               <tbody>
+                 {% for items in cartitem %}
+               <tr>
+                   <td>
+                       <a href=""><img src="{{items.product.img.url}}" alt="" style = "width:200px;heigt:200px;" class="float-left rounded custom_image"> </a></a>
+                   </td>
+                   <td class="text-left">
+              {{items.product.name}}
+              <br>
+              {{items.product.id}}
+              <br>
+              Price:{{items.product.price}}
+               <br>
+              Qty:{{items.quantity}} x {{items}}
+          </td>
+
+                   <td>
+                       Rs.{{items.sub_total}}
+                   </td>
+                   {% if items.quantity < items.product.stock %}
+                   <td>
+                       <a href="{% url 'cart_app:add_cart' items.product.id %}" class="custom_a"><i class="fa fa-plus-square custom_icon"></i></a><br>
+                       &nbsp;<a href="{% url 'cart_app:cart_remove' items.product.id %}" class="custom_a"><i class="fa fa-minus-square custom_icon"></i></a><br>
+                       &nbsp;<a href="{% url 'cart_app:trash' items.product.id %}" class="custom_icon"><i class="fa fa-trash custom_icon"></i></a>
+                   </td>
+                   {% else %}
+                   <td>
+                   &nbsp;<a href="{% url 'cart_app:cart_remove' items.product.id %}" class="custom_a"><i class="fa fa-minus-square custom_icon"></i></a>
+                   &nbsp;<a href="{% url 'cart_app:trash' items.product.id %}" class="custom_icon"><i class="fa fa-trash custom_icon"></i></a>
+                   </td>
+                   {% endif %}
+               </tr>
+               {% endfor %}
+               </tbody>
+           </table>
+       </div>
+       <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+           <table class="table my_custom_table">
+               <thead class="my_custom_thead"style="background-color:#ffe6ff">
+                 <tr>
+                     <th>
+                         Checkout
+                     </th>
+                 </tr>
+               </thead>
+               <tbody>
+               <tr>
+                   <td>
+                       please review your shopping cart items before proceeding with the order payment.
+                   </td>
+               </tr>
+               <tr>
+                   <td class="text-left">
+                       Your Total is :<strong>{{total}}</strong>
+                   </td>
+               </tr>
+               </tbody>
+           </table>
+           <div class="mx-auto">
+              <a href="{% url 'ecartapp:allproduct' %}" class="btn btn-success btn-block my_button">Shop More</a>
+               <a href="{% url 'ecartapp:allproduct' %}" class="btn btn-success btn-block my_button">Payment</a>
+           </div>
+       </div>
+   </div>
+      {% endif %}
+{% endblock %}

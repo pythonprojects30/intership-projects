@@ -5,14 +5,13 @@
     <div class = "row">
         {% for i in movie_list %}
         <div class = "col-md-4">
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem; margin-top:30px;">
                 <img src="{{i.img.url}}" class="card-img-top"  alt=" "  height = "250">
                 <div style="display: flex; flex-direction: row">
                          <div class="card-body">
                  <h3 class="card-title">{{i.name}}</h3>
-
-
-    <a href="{% url 'movieapp:details1' i.id %}" class="btn btn-dark">More info..</a><br>
+                 <h3 class="card-title">{{i.year}}</h3>
+                             <a href="{% url 'movieapp:details1' i.id %}" class="btn btn-dark">More info..</a><br>
                </div>
            </div>
       </div>

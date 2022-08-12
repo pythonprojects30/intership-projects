@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {% if category %}
+      {{ category.desc|truncatewords:155}}
+    {% else %}
+               Welcome to Homemade Cookies!Where you can get freshly baked Cookies..
+
+    {% endif %}
+{% endblock %}
+{% block title %}
+ {% if category %}
+      {{ category.name}} - Homemade Cookies
+    {% else %}
+               HANDMADE COOKIES !
+
+    {% endif %}
+{% endblock %}
+{% block content %}
+   {% if category %}
+      <div>
+          <div>
+
+          </div>
+      </div>
+   {% endif %}
+<div>
+    {% if category %}
+    <img src="{{category.img.url}}" alt ="{{category.name}}" style="width:1300px;height:400px;">
+
+</div>
+<br>
+<div>
+    <h1 style="font-weight: bold">{{category.name}}</h1>
+    <p style="font-size:2vw;">{{category.desc}}</p>
+</div>
+  {% else %}
+<div>
+<img src ="{% static 'img/banner.png' %}" alt = "Our Cookies"  width="1300px" height ="500px"  >
+</div>
+<br>
+<div>
+    <h1 style="font-weight: bold">Our Cookie collections</h1>
+    <p style="font-size:2vw;">A cookie is a baked or cooked snack or dessert that is typically small, flat and sweet. It usually contains flour, sugar, egg, and some type of oil, fat, or butter. It may include other ingredients such as raisins, oats, chocolate chips, nuts, etc.
+</p>
+</div>
+{% endif %}
+<div class ="container">
+    <div class = "row mx-auto">
+        {% for product in products.object_list %}
+        <div class = "my_bottom_margin col-9 col-sm-12 col-md-4 col-lg-4">
+            <div class="card text-center" style = "min-width:18rem;margin-top:30px;">
+                    <a href="{{product.get_url}}" > <img class="card-img-top my_image" style= "width:300px;height:300px; margin-top:40px;" src = "{{product.img.url}}" alt="{{product.name}}"></a>
+                <div class ="card-body">
+                    <h4>{{product.name}}</h4>
+                     <p>{{product.price}}</p>
+
+               </div>
+            </div>
+        </div>
+         {% endfor %}
+    </div>
+    <br>
+    <div class="mx-auto">
+        {% if products.paginator.num_pages > 1 %}
+        <div class="text-center">
+            {% for pg in products.paginator.page_range %}
+            <a href ="?page={{pg}}" class="btn btn-light btn-sm {% if product.number == pg %} active {% endif  %} ">{{pg}}</a>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+   {% endif %}
+{% endblock %}
+

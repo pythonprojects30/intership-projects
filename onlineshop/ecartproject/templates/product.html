@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+
+      {{ product.desc|truncatewords:155}}
+{% endblock %}
+{% block title %}
+ {% if product %}
+      {{product.name}} - Homemade Cookies
+    {% endif %}
+{% endblock %}
+{% block content %}
+<div class="row my_prod_row_class">
+
+    <div class="mx_auto">
+       <p><a href="{% url 'ecartapp:allproduct' %}" >Home</a> | <a href="{{product.category.get_url}}">{{product.category}}</a> {{product.name}}</p>
+    </div>
+</div>
+<div class="container">
+<div class ="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center" >
+        <div style="min-width:18rem;height:25em;">
+            <img src = "{{product.img.url}}"  alt="{{product.name}}" style="width:250px;height:300px;">
+
+        </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6" >
+            <div>
+            <h1 class="my_prod_name"><b>{{product.name}}</b></h1>
+            <p>{{product.price}}</p>
+
+            <p class="text-justify"><h3>{{product.desc}}</h3></p>
+            {% if product.stock <= 0 %}
+            <p  class="text-justify"><b>Out of stock</b></p>
+            {% else %}
+            <a class="btn btn-secondary" href = "{% url 'cart_app:add_cart' product.id %}"><b>Add to Cart</b></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

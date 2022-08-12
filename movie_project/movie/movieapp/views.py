@@ -25,6 +25,7 @@ def add(request):
         img = request.FILES['img']
         movie=Movie(name=name,desc=desc,year=year,img=img)
         movie.save()
+        return redirect('/')
     return render(request,'add.html')
 
 def update(request,id):
@@ -42,12 +43,3 @@ def delete(request,id):
         return  redirect('/')
     return  render(request,"delete.html")
 
-# def addmovie(request):
-#     if request.method == 'POST':
-#         name=request.POST.get('name')
-#         desc = request.POST.get('desc')
-#         year = request.POST.get('year')
-#         img = request.FILES['img']
-#         movie=Movie(name=name,desc=desc,year=year,img=img)
-#         movie.save()
-#     return redirect('index.html')
