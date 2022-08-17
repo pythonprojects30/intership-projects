@@ -1,0 +1,71 @@
+<html>
+     <head>
+            <title>
+                Registration Form
+            </title>
+	  <style>
+	  h1{
+	    text-align:center;
+		color:DarkSlateBlue;
+		font-size:35;
+		background-color:MistyRose;
+		outline-style:solid;
+		}
+		.demo
+		{
+		color:Teal;
+		font-size:20;
+		text-align:center;
+		outline-style: solid;
+		padding:20px;
+		background-color:LavenderBlush;
+		}
+
+
+	  </style>
+     </head>
+	 <h1>Registration Form<h2>
+	 <form method = "post" action="">
+		 {% csrf_token %}
+	    <div class ="demo">
+
+
+	      <label>User Name</label>&ensp;
+		  <input type="text" name="username">
+		  <br>
+		  <br>
+           <label>First name</label>&ensp;&ensp;&ensp;
+			<input type="text" name="firstname" placeholder="Enter your First name">
+			<br>
+            <br>
+            <br>
+             <label>Last name</label>&ensp;&ensp;&ensp;
+			<input type="text" name="lastname" placeholder="Enter your Lastname">
+			<br>
+            <br>
+            <br>
+		  <label>Email</label>&ensp;&ensp;&ensp;&ensp;
+		  <input type="email" name="email" placeholder="Enter your Emaill">
+		   <br>
+
+			 <br>
+			   <label>Password</label>&ensp;&ensp;&ensp;&ensp;&ensp;
+			   <input type="password" name="password" placeholder="Enter your Password">
+			   <br>
+			   <br>
+			    <label>Confm-Password</label>&ensp;&ensp;
+				<input type="password" name="cpassword" placeholder="Enter your confirm password">
+				<br>
+				<br>
+
+				<input type="submit" >
+				</div>
+
+
+
+	 </form>
+		 {% for msg in messages %}
+		 {{msg}}
+		 {% endfor %}
+
+</html>

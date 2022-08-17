@@ -1,0 +1,51 @@
+<html>
+       <head>
+          <title>Login page</title>
+		  <style>
+		  h1
+		  {
+		  font-size:30;
+		  color:DarkSlateBlue;
+		  text-align:center;
+		  background-color:MistyRose;
+		  outline-style:solid;
+		  }
+		  div
+		  {
+		  font-size:20;
+		  color:Teal;
+		  text-align:center;
+		  outline-style: solid;
+		padding:20px;
+		background-color:LavenderBlush;
+		}
+		button
+		{
+		font-size:20px;
+
+		}
+
+		  </style>
+        </head>
+	<body>
+	<h1>Login<h1>
+	   <form  method="post", action="">
+           {% csrf_token %}
+	   <div class ="demo3">
+	   <label>
+	   Username
+	   </label>
+	   <input type="text" name="username" placeholder="Enter your user name">
+	   <br>
+	   <br>
+	    <label>
+	   Password
+	   </label>
+	    <input type="password" name="password" placeholder="Enter your password">
+		<br>
+		<br>
+		 <button type="submit">Login</button>
+		 </div>
+	   </form>
+	</body>
+</html>
