@@ -1,0 +1,91 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ABC BANK</title>
+    <meta name="description" content="Free Bootstrap Theme by uicookies.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+    <link href="https://fonts.googleapis.com/css?family=Bellefair|Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles-merged.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+
+
+  </head>
+
+
+    <!-- Fixed navbar -->
+
+
+    <nav class="navbar navbar-default navbar-fixed-top probootstrap-navbar">
+      <div class="container">
+        <div class="navbar-header">
+
+           <a href="{% url 'index' %}"><h2>ABC Bank</h2></a>
+        </div>
+
+        <div id="navbar-collapse" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'index' %}"><h3>Home</h3></a></li>
+            <li><a href="{% url 'register' %}"><h3>Register</h3></a></li>
+
+
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle"><h3>Branches</h3></a>
+              <ul class="dropdown-menu">
+                <li><a href="https://en.wikipedia.org/wiki/Kannur"><h3>Kannur</h3></a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Thrissur"><h3>Thrissur</h3></a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Palakkad"><h3>Palakkad</h3></a></li>
+                 <li><a href="https://en.wikipedia.org/wiki/Idukki"><h3>Idukki</h3></a></li>
+                <li><a href="https://en.wikipedia.org/wiki/Kochi"><h3>Kochi</h3></a></li>
+
+
+              </ul>
+            </li>
+               <li><a href="{% url 'logout' %}"><h3>logout</h3></a></li>
+          </ul>
+        </div>'
+      </div>
+    </nav>
+<style>
+.content {
+  max-width: 500px;
+  margin: auto;
+  margin-top:100px;
+}
+.heading{
+text-align: center;
+</style>
+<body>
+
+<div class="content">
+	<div class = "container">
+    <div class ="row">
+        <div class = "col-md-4">
+
+                <form method = "POST" class="p-3 shadow" action = "login">
+              {% csrf_token %}
+                    <div class = "form-group">
+						<div class="heading">
+						<h2>Login Here</h2>
+						</div>
+
+                        <label>UserName</label>
+    <input type = "text"  class = "form-control" name="username" placeholder="Enter your User Name">
+                   </div>
+                    <div class = "form-group"> <label>Password</label>
+    <input type= "password" class = "form-control" name= "password" placeholder="Enter password">
+                        </div>
+
+
+					<div class="heading">
+					  <a class="btn btn-info" href="{% url 'new' %}">Login</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-info" href ="{% url 'register' %}">Register</a>
+				</div>
+       </div>
+    </div>
+
+ </body>
